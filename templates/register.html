@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block main %}
+
+<div class="form">
+    <form action="/register" method="post" >
+
+        <div class="mb-3">
+            <label for="username" class="form-label visually-hidden" >username</label>
+            <input type="text" name="username" id="username" autocomplete="off" placeholder="Username" required>
+    
+            
+            
+        </div>
+        <!-- change the id from password to pass -->
+        <div class="vis mb-3">
+            <label for="pass" class="form-label visually-hidden">password</label> 
+             <input type="password" name="password"  id="pass" autocomplete="off" placeholder="Password" class="pass" required>
+             <span class="fa fa-eye icon"></span>
+         
+        </div>
+
+        
+        <div class="vis mb-3">
+            <label for="confirmation" class="form-label visually-hidden">confirm</label>
+            <input type="password" class="pass" name="confirmation" id="confirmation" autocomplete="off" placeholder="Confirm password" required>
+            <span class="fa fa-eye icon"></span>
+        </div>
+    
+        <div class="form-text mb-3">
+            Your password must be <span id="length" class="invalid">8 characters long</span>, contain a <span id="number" class="invalid">number</span> and <span id="capital" class="invalid">upper-case character</span>
+        </div>
+
+            {% for category , msg in get_flashed_messages(with_categories=True) %}
+                <p class="alert-{{category}}"> {{ msg }}</p>
+            {% endfor %}
+
+    
+        <button type="submit" class="btn btn-primary register" value="false" name="register"> Register</button>
+
+        
+       
+       
+       
+    </form>
+
+    
+
+    
+</div>
+
+
+
+
+{% endblock %}
