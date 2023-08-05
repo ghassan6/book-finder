@@ -3,15 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="/book-finder/static/script.js" defer></script>
+    <script src="{{ url_for('static' , filename='script.js')}}" defer></script>
     <link rel="stylesheet" href="{{ url_for('static' , filename='style.css')}}">
     <!-- <link rel="stylesheet" href="/book-finder/static/style.css?q=1280549780"> -->
-    <link rel="icon" href="/book-finder/static/icon.ico" type="image/x-icon">
-    <title>BookFinder {% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static' , filename='icon.ico')}}" type="image/x-icon">
+    <title>BookFinder: {% block title %}{% endblock %}</title>
 </head>
 <body>
-   test 
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img src=" {{ url_for('static' , filename='pics/logo.png')}}" alt="logo">
+           <div class="d-inline-flex flex-column">
+            <span>Book</span><span>finder</span>
+           </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
+            <div class="navbar-nav m-auto">
+              <a class="nav-link active" aria-current="page" href="#">tmp</a>
+              <a class="nav-link" href="/book-finder/templates/blank.html">tmp</a>
+              <a class="nav-link" href="#">tmp</a>  
+              
+            </div>
+
+           
+            
+          </div>
+
+          {% if session["user_id"]%}
+
+            <div class="navbar-nav ms-auto">
+              <a  class="nav-link" href="/logout">Logout</a>
+            </div>
+
+            {% else %}
+
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link"  href="/login">Log-in</a>
+              <a class="nav-link"  href="/register">Register</a>
+           </div>
+
+           {% endif %}
+
+        </div>
+      </nav>
+
+      <main class="containesr-fluid py-5 text-center" >
+        {% block main %} {% endblock %}
+      </main>
+
+
+      <footer>
+        <div class="container-fluid text-center upper">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3>Book-finder</h3>
+              <p>look for your favorite book!</p>
+              <a href="#"><button>Contact us</button></a>
+            </div>
+            <div class="col">
+              <h3>Helpful links</h3>
+            </div>
+            <div class="col">
+              <h3>Contact us</h3>
+              <div class="social">
+                <a href="#" class="fa fa-facebook-square"></a>
+                <a href="#" class="fa fa-reddit-square"></a>
+                <a href="#" class="fa fa-instagram"></a>
+              </div>
+          </div>
+
+         
+          </div>
+
+          
+        </div>
+        
+        <div class="container-fluid text-center lower">
+          <div> Copyright &copy; 2023 <a href="https://github.com/ghassan6" target="_blank"><span class="fa fa-github"></span></a> </div>
+        </div>
+       
+
+        
+      </footer>
+      
+
+      
 </body>
 </html>

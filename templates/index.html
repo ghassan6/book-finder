@@ -1,3 +1,29 @@
 {% extends "layout.html" %}
 
 {% block title %} Homepage {% endblock %}
+
+
+{% block main%} 
+
+<div class="intro">
+    {% if session["user_id"] %}
+        <h3><span>Hello , {{name}}</span></h3>
+    {% endif %}
+    <h1><span>Book Finder</span></h1>
+    <p><span>our <strong>book finder</strong> helps you find and discover the best books</span></p>
+    <p><span>start by looking for your favorite book!</span></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
