@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %} Want to read {% endblock %}
+
+{% block main %}
+
+
+<div class="container">
+
+{% if books %}
+    {% for book in books %}
+    <div class="row justify-content-center text-start mb-3 me-5 ms-5">
+
+        <div class="col-2">
+            <img src="{{book['img']}}" alt="{{book['title']}}" width="180" height="220">
+        </div>
+
+        <div class="col-4 pt-3 border-end border-3">
+            <p><strong>Title:</strong> {{book["title"]}}</p>
+
+            <p><strong>Author: </strong>{{book["authors"]}}</p>
+
+            {% if book['category'] != "" %}
+                <p><strong>Category: </strong>{{book['category']}}</p>
+            {% endif %}
+        </div>
+
+        <div class="col pt-3">
+            <p><strong>Identifier: </strong> {{book['identifier']}}</p>
+                         
+            <p><strong>Pages: </strong>{{book["pages"]}}</p>
+            
+            {% if book["date"]%}
+            <p><strong>Published date: </strong> {{book["date"]}}</p>
+            {% endif %}
+
+        </div>
+
+        <div class="row mt-3">
+            <p><strong>Description: </strong>{{book["desc"]}}</p>
+        </div>
+
+        <div class="row-4">
+            <button class="btn btn-danger delete mb-3 " value="{{book['book_id']}}" id="{{book['state']}}" >Delete</button>
+            <a href="{{book['google']}}" target="_blank"><button class="btn mb-3 ms-2 google">View on Google books</button></a>
+        </div>
+        
+    </div>
+    <hr>
+
+    {% endfor %}
+
+{% else %}
+
+<h2 >oops, such empty </h2>
+<h2><a href="/"><em>Search</em></a> for books and add them to your list</h2>
+
+{% endif %}
+</div>
+
+
+<script>
+
+    let deleteBtn = document.querySelectorAll(".delete")
+    
+    deleteBtn.forEach(btn => {
+        btn.addEventListener('click' , () => {
+            
+            fetch(`${window.origin}/delete` , {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify(btn.value),
+                cache: "no-cache",
+                headers: new Headers ({
+                    "content-type": "application/json"
+                })
+            })
+            window.location.href = '/lists//have-read'
+        })
+
+        
+    })
+
+    
+</script>
+
+{% endblock %}

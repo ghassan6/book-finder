@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %} search {% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="row justify-content-center position-relative">
+            <div class="col-6">
+                <form  action="/search"  >
+                    <label for="book" class="form-label visually-hidden" >search</label>
+                    <input type="text" name="book" id="book" autocomplete="off" placeholder="Search!" class="form-control-lg form-control">
+                    <button type="submit" class="btn " ><span class="fa fa-search search "></span></button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+        
+   <div class="container books mt-5 ">
+        <div class="result">
+            <div class="row">
+                {% for book in books %}
+                    <div class="col-5 cards mb-4">
+
+                        <a href="/info/{{book['id']}}" data-value="{{book['id']}}"><img src="{{book['img']}}" alt="{{book['title']}}" class="book-img"></a>
+                        
+                        <div class="content pt-1">
+                            <p class="text-center fs-5"><strong> {{book["title"]}}</strong> </p>
+                            <p><strong>Author:</strong> {{book.authors}}</p>
+                            <p><strong>Date published: </strong>{{book.date}}</p>
+                            <a href="/info/{{book['id']}}"> More information </a> 
+                        </div>
+                    </div>
+
+                
+
+                {% endfor %}
+
+            </div>
+        </div>
+   </div>
+
+   
+{% endblock %}

@@ -5,25 +5,90 @@
 
 {% block main%} 
 
-<div class="intro">
+
+<div>
     {% if session["user_id"] %}
-        <h3><span>Hello , {{name}}</span></h3>
+        <h3><span>Welcome back , {{name}}</span></h3>
     {% endif %}
-    <h1><span>Book Finder</span></h1>
-    <p><span>our <strong>book finder</strong> helps you find and discover the best books</span></p>
-    <p><span>start by looking for your favorite book!</span></p>
+    <h4><span>Start by looking for your favorite book!</span></h4>
+</div>
+
+<div class="intro">
+
+            <form  action="/search"  >
+                <label for="book" class="form-label visually-hidden" >search</label>
+                <input type="text" name="book" id="book" autocomplete="off" placeholder="Search!" class="form-control form-control-lg ">
+                <button type="submit" class="btn " ><span class="fa fa-search main"></span></button>
+                
+            </form>
+    
 </div>
 
 
+<div id="carousel" class="carousel slide mt-5" >
+
+    <div class="carousel-indicators">
+      <button data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
+      <button data-bs-target="#carousel" data-bs-slide-to="1"></button>
+      <button data-bs-target="#carousel" data-bs-slide-to="2"></button>
+    </div>
+
+    
+      
+    
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <div class="overlay-img" style="background-image: url('/static/pics/article-one.jpg');"></div>
+        <div class="container">
+          <h5>Reading for fun </h5>
+          <a href="/article/reading-fun" class="btn btn-primary mt-2">Read more</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="overlay-img" style="background-image: url('/static/pics/article-two.jpg');"></div>
+        <div class="container">
+          <h5>4 Strategies for Building Content Knowledge</h5>
+          <a href="/article/4-Strategies-for-Building-Content-Knowledge" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="overlay-img" style="background-image: url('/static/pics/article-three.jpg');"></div>
+        <div class="container">
+          <h5>Reading matters: What is reading?</h5>
+          <a href="/article/Reading-matters-What-is-reading" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  
+
+</div>
 
 
-
-
-
-
-
+<div class="container mt-3">
+  {% if session %}
+  <h3>From your list: </h3>
+  {% endif %}
+  {% for book in books %}
+  
+  <div class="book-menu ">
+   
+    <!-- <div class="book-card mt-2"> -->
+      <a href="/lists/{{book.state.replace(' ' , '-')}}"> <img src="{{book.img}}" alt="{{book.title}}"></a>
+    <!-- </div> -->
+    
+    {% endfor %}
+  </div>
+</div>
 
 
 {% endblock %}
-
 

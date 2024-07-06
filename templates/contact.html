@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %} Contact us! {% endblock %}
+
+
+{% block main %}
+
+    <div class="row me-4 ms-3 mt-3">
+        <div class="col-5 me-3 contact">
+            <h1>Contact Us!</h1>
+            <div class="social mt-4">
+                <a href="#" class="fa fa-facebook-square"></a>
+                <a href="#" class="fa fa-reddit-square"></a>
+                <a href="#" class="fa fa-instagram"></a>
+              </div>
+        </div>
+
+        <div class="col-5">
+            <form>
+                <div class="row text-start">
+                    <div class="col-md-6 mb-3">
+                        <label for="fName" class="form-label">First name</label>
+                        <input type="text" name="fName" id="fName" autocomplete="off" class="form-control" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="lName" class="form-label">Last name</label>
+                        <input type="text" name="lName" id="lName" autocomplete="off" class="form-control" required>
+                    </div>
+
+                    <div class="col-10 mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email" autocomplete="off" class="form-control" required>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label for="message" class="form-label">Leave a message!</label>
+                        <textarea name="message" id="message" cols="100"  rows="3" class="form-controls"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-primary col-3" type="submit" onclick="submit_message()">Submit</button>
+
+                </div>
+            </form>
+        </div>
+    </div>  
+
+
+
+{% endblock %}

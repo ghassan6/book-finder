@@ -4,7 +4,7 @@
 
 {% block main %} 
 <div class="form">
-    <form action="/login" method="post">
+    <form action="/login" method="post" class="info">
         <div class="mb-3">
             <label for="username" class="form-label visually-hidden">username</label>
             <input type="text" name="username" id="username" autocomplete="off" placeholder="username" required>
@@ -20,6 +20,8 @@
         {% for category , msg in get_flashed_messages(with_categories=True) %}
             <p class="alert-{{category}}">{{ msg }}</p>
         {% endfor %}
+
+        <div>Don't have an account? <a href="/register"><em>Sign up!</em></a></div>
     
         <button type="submit" class="btn btn-primary">Log-in</button>
     </form>

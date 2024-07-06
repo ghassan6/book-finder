@@ -5,7 +5,7 @@
 {% block main %}
 
 <div class="form">
-    <form action="/register" method="post" >
+    <form action="/register" method="post" class="info" >
 
         <div class="mb-3">
             <label for="username" class="form-label visually-hidden" >username</label>
@@ -17,7 +17,7 @@
         <!-- change the id from password to pass -->
         <div class="vis mb-3">
             <label for="pass" class="form-label visually-hidden">password</label> 
-             <input type="password" name="password"  id="pass" autocomplete="off" placeholder="Password" class="pass" required>
+             <input type="password" name="password"  autocomplete="off" placeholder="Password" class="pass check" required>
              <span class="fa fa-eye icon"></span>
          
         </div>
